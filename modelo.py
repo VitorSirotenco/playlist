@@ -21,11 +21,16 @@ class Programa:
     def dar_like(self):
         self._likes += 1
 
+    def __str__(self):
+        return f'{self._nome} - {self.ano} - {self._likes} Likes' #representação textual do objeto
+
 class Filme (Programa):
     def __init__(self, nome, ano, duracao):
         super().__init__(nome,ano)
         self.duracao = duracao
 
+    def __str__(self):
+        return f'{self._nome} - {self.ano} - {self.duracao} min - {self._likes} Likes'
 
 
 class Serie (Programa):
@@ -33,14 +38,25 @@ class Serie (Programa):
         super().__init__(nome, ano)
         self.temporadas = temporadas
 
+    def __str__(self):
+        return f'{self._nome} - {self.ano} - {self.temporadas} temporadas - {self._likes} Likes'
+
 
 vingadores = Filme('vingadores', 2018, 180)
 
 ozark = Serie('ozark', 2020, 4)
 
+ozark.dar_like()
+ozark.dar_like()
+vingadores.dar_like()
 
-print(f'Nome: {vingadores.nome} - Ano: {vingadores.ano} - Duração: {vingadores.duracao} Likes: {vingadores.likes}')
-print(f'Nome: {ozark.nome} - Ano: {ozark.ano} - Temporadas: {ozark.temporadas} - Likes: {ozark.likes}')
+filmes_e_series = [vingadores, ozark]
+
+for programa in filmes_e_series:
+    print(programa)
+
+
+
 
 
 
